@@ -16,6 +16,11 @@ def quantum_full_adder(qc, a, b, cin, sum_, carry, temp1, temp2, temp3):
     qc.cx(temp2, carry)
     qc.cx(temp3, carry)
 
+def quantum_sub(qc, a, b, cin,  sum_, carry, temp1, temp2, temp3):
+    qc.x(b)
+    quantum_full_adder(qc, a, b, cin, sum_, carry, temp1, temp2, temp3)
+    qc.x(b)
+
 n = 8
 
 a = QuantumRegister(n, 'a')
