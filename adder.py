@@ -21,6 +21,9 @@ def quantum_sub(qc, a, b, cin,  sum_, carry, temp1, temp2, temp3):
     quantum_full_adder(qc, a, b, cin, sum_, carry, temp1, temp2, temp3)
     qc.x(b)
 
+def quantum_and(qc, a, b, result):
+    qc.ccx(a, b, result)
+
 n = 8
 
 a = QuantumRegister(n, 'a')
@@ -31,6 +34,7 @@ temp1 = QuantumRegister(n, 't1')
 temp2 = QuantumRegister(n, 't2')
 temp3 = QuantumRegister(n, 't3')
 cr = ClassicalRegister(n + 1, 'c')
+opcode = QuantumRegister(5, 'opcode')
 
 qc = QuantumCircuit(a, b, sum_, carry, temp1, temp2, temp3, cr)
 
